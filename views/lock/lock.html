@@ -1,0 +1,21 @@
+<% include header.html %>
+<form class="navbar-form pull-left" action="lock">
+  <input type="text" id="orderNo" name="orderNo" class="span2" value="<%=orderNo%>">
+  <button type="submit" class="btn">Search</button>
+  <%if(user){%>
+   <input type="text" id="userLoginName" name="userLoginName" class="span2" value="<%=user%>">
+  <button id="clickOut" class="btn" type="button">Kick Out</button>
+  <%}%>
+</form>
+<script type="text/javascript">
+//<!--
+$(function(){
+	$("#clickOut").bind("click", function(){
+		$.get("lock", {kickName:$("#userLoginName").val(), orderNo:$("#orderNo").val()}, function(){
+			window.location = "lock?orderNo="+$("#orderNo").val();
+		});
+	});
+});
+//-->
+</script>
+<% include footer.html %>

@@ -1,0 +1,10 @@
+<% include header.html %>
+<canvas id="myChart" width="600" height="300"></canvas>
+<table class="table table-bordered table-striped responsive-utilities">
+<%for(var i=0; i<list.length; i++){%>
+<tr><td>
+<%= list[i]%>
+</tr></td>
+<%}%>
+</table>
+<% include footer.html %>

@@ -1,0 +1,16 @@
+{
+	"appenders":[{
+		"type": "file",
+		"filename": "logs/msgApp.log",
+		"maxLogSize": 1048576,
+		"backups": 3,
+		"category": "app"
+	},{
+		"type": "file",
+		"filename": "logs/msgIo.log",
+		"maxLogSize": 1048576,
+		"backups": 3,
+		"category": "io"
+	}],
+	"replaceConsole": true
+}

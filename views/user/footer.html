@@ -1,0 +1,48 @@
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="http://10.168.2.37:9001/socket.io/socket.io.js?v=1"
+	defer="defer"></script>
+<script src="/js/msgSocket.js"></script>
+<script src="/js/progress.js"></script>
+<script type="text/javascript">
+	var canvas = document.getElementById("myChart");
+	var ctx = canvas.getContext("2d");
+	$(function() {
+		var chart = new Progress(ctx);
+		var xIndex = 0;
+		var count = 0;
+		var so = new MsgSocket({
+			host : '10.168.2.37',
+			port : 9001,
+			user : "admin",
+			listener : {
+				'online' : function(d){
+					console.log(d);
+					if(d.count){
+						count = d.count;
+					}
+				},
+				'newonline' : function(d) {
+					console.log(d);
+					if(d.count){
+						count = d.count;
+					}
+				},
+				'offline' : function(d) {
+					console.log(d);
+					if(d.count){
+						count = d.count;
+					}
+				}
+			}
+		});
+		so.connect();
+		setInterval(function(){
+			xIndex++;
+			chart.addOne(xIndex, count)
+		},500);
+	});
+//-->
+</script>
+</body>
+</html>
